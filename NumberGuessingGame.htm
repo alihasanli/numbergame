@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />   
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Number Game</title>
+        <style>
+            body { text-align: center;}
+            input { height: 30px; width: 200px; text-align: center; border: 3px solid #999; font-size: 1.5em}
+            button { height: 30px; width: 60px; border: 2px solid #999; font-size: 1.2em; border-radius: 5px; margin-top: 15px}
+            p { font: 2em sans-serif}
+        </style>
+    </head>
+    <body>
+        <h1>I caught a number between 1-100, find it</h1>
+        <input type="text" id="a" />
+        <br />
+        <button onclick="match()">Ok</button>
+        <p id="result"></p>
+
+        <script>
+            const a = document.getElementById("a")
+            const result = document.getElementById("result")
+            let random = Math.floor(Math.random() * 100) + 1;
+            let guess = 0;
+
+            function match() {
+                let aval = a.value   
+               
+
+                if ( aval == random) {
+                    guess++  
+                    result.innerHTML = `Congratulations, number is true: <b>${random}</b>, number of guess: ${guess} `
+                }
+                else if ( aval > random) {
+                    guess++ 
+                    result.innerHTML = `Please use smaller number`               
+                }
+                else if ( aval < 0) {
+                    result.innerHTML = `You can't use negative number, please try again`               
+                }
+                else if ( aval == "") {
+                    result.innerHTML = `Please fill in the gap!`               
+                }
+                else {
+                    guess++
+                    result.innerHTML = `Please use larger number`
+                }
+            }
+        </script>
+    </body>
+</html>
